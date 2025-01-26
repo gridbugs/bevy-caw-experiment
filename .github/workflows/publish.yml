@@ -16,10 +16,14 @@ jobs:
       - name: Check out
         uses: actions/checkout@v3
 
+      - name: Install tools
+        rust: |
+          rustup target add wasm32-unknown-unknown
+          cargo install -f wasm-bindgen-cli
+
       - name: Build
         run: |
           ./build-web.sh
-          ./opt-web.sh
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3.0.0
