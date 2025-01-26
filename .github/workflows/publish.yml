@@ -26,7 +26,6 @@ jobs:
       - name: Build
         run: |
           ./build-web.sh
-          ./opt-web.sh
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3.0.0
