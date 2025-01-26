@@ -5,7 +5,9 @@ edition = "2021"
 
 [patch.crates-io]
 caw_core = { path = "/home/s/src/caw/core" }
+caw_keyboard = { path = "/home/s/src/caw/keyboard" }
+caw_computer_keyboard = { path = "/home/s/src/caw/computer-keyboard" }
 
 [dependencies]
 bevy = "0.15"
-caw = { version = "0.4", features = ["player"] }
+caw = { version = "0.4", features = ["player", "web"] }

@@ -1442,8 +1442,6 @@ dependencies = [
 [[package]]
 name = "caw_computer_keyboard"
 version = "0.2.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1bb8307cb5acef80d5003c58b4f0678c4db7bb21249ea1d411de9307f1d244e3"
 dependencies = [
  "caw_core",
  "caw_keyboard",
@@ -1456,8 +1454,6 @@ version = "0.3.2"
 [[package]]
 name = "caw_keyboard"
 version = "0.2.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b23b414412d57e17bf49c0b0e5ec2db292e089cfb078f936ffd62e36430563e"
 dependencies = [
  "caw_core",
  "getrandom",
