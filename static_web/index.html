@@ -1,35 +1,36 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-    <style>
-      body {
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: grey;
-      }
-    </style>
-  </head>
-  <body>
-    <button id="start">Start! (Play notes with keyboard keys, mouse controls filter and flange delay.)</button>
-    <script type="module">
-      import init from './bevy-caw-experiment.js'
-      const startButton = document.querySelector('#start');
-      startButton.addEventListener('click', async () => {
-        startButton.remove();
-        const loading = document.createElement('span');
-        loading.innerHTML = "Loading...";
-        document.querySelector('body').appendChild(loading);
-        try {
-          await init();
-        } finally {
-          loading.remove();
-        }
-      });
-    </script>
-  </body>
+	<head>
+		<title>CAW Synth Stereo Oscillographics Demo</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+		<style>
+body {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: grey;
+}
+		</style>
+	</head>
+	<body>
+		<button id="start">Start! (Play notes with keyboard keys, mouse controls flange delay (x) and filter (y).)</button>
+		<script type="module">
+			import init from './bevy-caw-experiment.js'
+			const startButton = document.querySelector('#start');
+			startButton.addEventListener('click', async () => {
+				startButton.remove();
+				const loading = document.createElement('span');
+				loading.innerHTML = "Loading...";
+				document.querySelector('body').appendChild(loading);
+				try {
+					await init();
+				} finally {
+					loading.remove();
+				}
+			});
+		</script>
+	</body>
 </html>
