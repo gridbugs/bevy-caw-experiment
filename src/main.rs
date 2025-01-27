@@ -20,7 +20,8 @@ impl AudioState {
         let player = Player::new()
             .unwrap()
             .into_async_stereo(ConfigAsync {
-                max_latency_s: 0.05,
+                queue_latency_s: 0.04,
+                system_latency_s: 0.02,
             })
             .unwrap();
         let sig = Stereo::new_fn_channel(|_channel| {
@@ -35,8 +36,9 @@ impl AudioState {
                 .mono_voice();
             let env = adsr_linear_01(key_down_gate)
                 .key_press_trig(key_press_trig)
-                .release_s(4.)
-                .build();
+                .release_s(10.)
+                .build()
+                .exp_01(1.0);
             super_saw(note.freq_hz().filter(low_pass::butterworth(10.)))
                 .build()
                 .filter(low_pass::default(env * mouse_y.clone() * 8000.).resonance(0.2))
