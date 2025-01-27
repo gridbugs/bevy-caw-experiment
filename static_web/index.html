@@ -15,9 +15,21 @@
     </style>
   </head>
   <body>
+    <button id="start">Start! (Play notes with keyboard keys, mouse controls filter and flange delay.)</button>
     <script type="module">
       import init from './bevy-caw-experiment.js'
-      init()
+      const startButton = document.querySelector('#start');
+      startButton.addEventListener('click', async () => {
+        startButton.remove();
+        const loading = document.createElement('span');
+        loading.innerHTML = "Loading...";
+        document.querySelector('body').appendChild(loading);
+        try {
+          await init();
+        } finally {
+          loading.remove();
+        }
+      });
     </script>
   </body>
 </html>

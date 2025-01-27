@@ -1413,9 +1413,9 @@ dependencies = [
 
 [[package]]
 name = "caw"
-version = "0.5.0"
+version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "020b13375db542d5c2b5673fac1aab3c5b6e96c22f6dd7c18b610c4f3b45f936"
+checksum = "6e36b68cff5d86196c08fdda1728743942da985a1f561455f9807259b6b65a34"
 dependencies = [
  "caw_builder_proc_macros",
  "caw_computer_keyboard",
@@ -1441,9 +1441,9 @@ dependencies = [
 
 [[package]]
 name = "caw_computer_keyboard"
-version = "0.2.2"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a8f99397fc23fa00807af6a20b1d8bc9c83c1934a11f6e12d4b7efb5fafcf675"
+checksum = "d03c66f8bde7ecbd6ce93bdfff513960225774b51614ad52c296367f66b6f76a"
 dependencies = [
  "caw_core",
  "caw_keyboard",
@@ -1451,15 +1451,15 @@ dependencies = [
 
 [[package]]
 name = "caw_core"
-version = "0.3.3"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fca02b7a7bb300c15c241ec6a34c249a5aa996e7293a514cdff65ef426ae86e6"
+checksum = "6fe44c2a314a7f871bfce443ab4e66b5ed14d8c98ca63fea616eb2628be1cd94"
 
 [[package]]
 name = "caw_keyboard"
-version = "0.2.3"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b23b414412d57e17bf49c0b0e5ec2db292e089cfb078f936ffd62e36430563e"
+checksum = "65f9f6111550b7dc89ab89f1e6a3b695f70f7bd1b374f3caf483bdd12808c23e"
 dependencies = [
  "caw_core",
  "getrandom",
@@ -1470,9 +1470,9 @@ dependencies = [
 
 [[package]]
 name = "caw_modules"
-version = "0.2.3"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5cd223e99f7ccfada9ee132fb14027cc11548ce8ce5452c5ed8dd44e15058eaa"
+checksum = "4b83c2b739b716f0e20f99d48d6c9321574ea6291f5aaded1795d98e0a0de5fd"
 dependencies = [
  "caw_builder_proc_macros",
  "caw_core",
@@ -1485,9 +1485,9 @@ dependencies = [
 
 [[package]]
 name = "caw_patches"
-version = "0.2.1"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d62c2e6612a46fa349a8043b83d38673a385e585afdb7198d2f23d178676d141"
+checksum = "8a8a33cc03d2f492f913a5e944934d182444a3327b52f3b53b7b4c9aba45bf02"
 dependencies = [
  "caw_builder_proc_macros",
  "caw_core",
@@ -1497,9 +1497,9 @@ dependencies = [
 
 [[package]]
 name = "caw_player"
-version = "0.4.0"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7601044a94d736988f90b040d06822ac6319c61efb77d14f5e98c33f40f291cf"
+checksum = "29246a6b9dba983e1d7b3a2a4df4a0751fb079862e0dbf1fc131a5c8183f087f"
 dependencies = [
  "anyhow",
  "caw_core",
@@ -1509,9 +1509,9 @@ dependencies = [
 
 [[package]]
 name = "caw_utils"
-version = "0.2.2"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8fa1d9dc773215ef632048128049b5aa28bed6a26727585715d20a748808ed6d"
+checksum = "33b615423d8c9f87291625e1aa38b79f5326ddd72e725df57ec6699d8204a6b1"
 dependencies = [
  "caw_core",
  "getrandom",

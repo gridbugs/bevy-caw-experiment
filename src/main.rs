@@ -5,8 +5,7 @@ use std::collections::VecDeque;
 const MAX_NUM_SAMPLES: usize = 2_000;
 
 struct AudioState {
-    player: PlayerAsyncStereo,
-    sig: StereoPair<SigBoxed<f32>>,
+    player: PlayerOwned,
     mouse_x: FrameSigVar<f32>,
     mouse_y: FrameSigVar<f32>,
     keyboard: Keyboard<FrameSig<FrameSigVar<bool>>>,
@@ -15,15 +14,8 @@ struct AudioState {
 impl AudioState {
     fn new() -> Self {
         let keyboard = Keyboard::new(|_| frame_sig_var(false));
-        let mouse_x = frame_sig_var(0.);
-        let mouse_y = frame_sig_var(0.);
-        let player = Player::new()
-            .unwrap()
-            .into_async_stereo(ConfigAsync {
-                queue_latency_s: 0.04,
-                system_latency_s: 0.02,
-            })
-            .unwrap();
+        let mouse_x = frame_sig_var(0.5);
+        let mouse_y = frame_sig_var(0.5);
         let sig = Stereo::new_fn_channel(|_channel| {
             let MonoVoice {
                 note,
@@ -53,9 +45,18 @@ impl AudioState {
                 .filter(high_pass_butterworth(1.))
                 .boxed()
         });
+        let player = Player::new()
+            .unwrap()
+            .into_owned_stereo(
+                sig,
+                ConfigSync {
+                    system_latency_s: 0.0167,
+                },
+            )
+            .unwrap();
+
         Self {
             player,
-            sig,
             mouse_x: mouse_x.0,
             mouse_y: mouse_y.0,
             keyboard,
@@ -63,14 +64,16 @@ impl AudioState {
     }
 
     fn tick(&mut self, scope_state: &mut ScopeState) {
-        self.player.play_signal_callback(&mut self.sig, |samples| {
-            for (&x, &y) in samples.left.iter().zip(samples.right.iter()) {
+        self.player.with_latest_data(|data| {
+            for chunks in data.chunks_exact(2) {
+                let x = chunks[0];
+                let y = chunks[1];
                 scope_state.samples.push_back(Vec2::new(x, y));
             }
-            while scope_state.samples.len() > MAX_NUM_SAMPLES {
-                scope_state.samples.pop_front();
-            }
         });
+        while scope_state.samples.len() > MAX_NUM_SAMPLES {
+            scope_state.samples.pop_front();
+        }
     }
 }
 
